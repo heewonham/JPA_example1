@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name="ORDERS")
 // order가 예약어로 걸려있는 경우 테이블명으로 안되는 경우가 있음.
-public class Order {
+public class Order extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")
@@ -17,6 +17,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
 
     private LocalDateTime orderDate;
 
